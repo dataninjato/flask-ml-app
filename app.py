@@ -34,13 +34,19 @@ def Prediction():
     tfidf_transformer_data = tfidf_transformer.transform(count_vect_data)
     prediction = clf.predict(tfidf_transformer_data)
     prediction_name = prediction_map.get(str(prediction[0]), "couldn't find name")
-  
+    """
     response = {
         'status': 200,
         'prediction':prediction_name,
         'created_at': datetime.datetime.now()
     }
-    return jsonify(response)
+    """
+    response = prediction_name
+
+#results.html
+    #return jsonify(response)
+    return render_template('prediction.html',response=response )
+   
 
 if __name__ == '__main__':
     app.run()
